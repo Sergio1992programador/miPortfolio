@@ -1,0 +1,170 @@
+header {
+    background-color:  #FFE53B;
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Enlaces por defecto en negro */
+.nav-link {
+    color: black !important;
+    font-size: 25px;
+    padding: 15px !important;
+}
+
+/* Enlaces en hover → amarillo */
+.nav-link:hover {
+    color: #0192B6 !important;
+}
+
+#navbar {
+    background: #FFE53B !important;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+
+/* Imagen de fondo cuando paso el ratón por el header */
+/* #navbar:hover {
+    background-image: url("cielo.jpg") !important;
+    background-repeat: repeat !important;
+    background-size: cover !important;
+}
+ */
+.navbar-toggler {
+
+    background-color: #0192B6;
+
+}
+
+#barto {
+    width: 82px;
+    height: 100px;
+}
+
+h1:hover,
+.nav-link {
+    color: #0192B6;
+}
+
+.container-fluid {
+    color: black;
+}
+
+/* header:hover,
+nav:hover {
+    background-image: url(cielo.jpg);
+    background-repeat: repeat;
+    background-size: contain;
+} */
+
+body {
+    background-image: url("lossimpsonss.jpg");
+    background-repeat: no-repeat;
+    /* no repetir la imagen */
+    background-size: cover;
+    /* que cubra todo el ancho */
+    background-position: center;
+    /* centrada */
+    background-attachment: fixed;
+    /* fija al hacer scroll */
+    height: 100vh;
+    /* ocupa toda la altura de la pantalla */
+
+}
+
+h3,
+h4,
+p {
+    color: #0192B6;
+
+
+}
+
+.col-sm-10:hover,
+h3:hover,
+h4:hover,
+p:hover {
+    background-color: #FFE53B;
+    border-radius: 30px;
+}
+
+.col-sm-10:hover {
+    box-shadow: 10px 5px 5px #0192B6;
+}
+
+
+
+.col-sm-10 {
+    background-color: white;
+    border-radius: 30px;
+}
+
+h1 {
+    color: black;
+}
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    list-style: none;
+    background-color: #FFE53B;
+    font-size: 25px;
+    color: black;
+}
+
+/* 
+footer:hover {
+    background-image: url(cielo.webp);
+    background-repeat: repeat;
+    background-size: contain;
+
+} */
+
+#footer {
+    color: rgb(0, 0, 0);
+    background-color: none;
+}
+
+strong:hover {
+    color: #0192B6;
+}
+
+.col-sm-10 {
+    cursor: pointer;
+}
+
+.contenedor {
+    width: 100%;
+    height: 100%;
+}
+
+h3 {
+    padding: 15px;
+}
+
+* {
+    scrollbar-width: 0;
+    /* Firefox */
+    scrollbar-color: #0192B6 #f0f0f0;
+    /* color del thumb y del track */
+}
+
+.descripcion-wrapper {
+    max-height: 200px;
+    overflow-y: hidden;
+    /* Oculta el scroll por defecto */
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Hover en la card activa scroll y borde */
+.col-sm-10:hover .descripcion-wrapper {
+    overflow-y: auto;
+    border-radius: 5px;
+}

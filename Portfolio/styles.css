@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+}
+
+body, div, ul, li, a, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+label, .sidebar__nav {
+    user-select: none;
+} 
+
+body {
+    --bg-color: color-mix(in srgb, #26a 70%, #fff);
+    --sidebar-color: #26a;
+    --dark-color: #fed8a7e0;
+    --text-color: #333;
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+}
+
+/*Estilos sidebar*/
+
+.sidebar {
+    background-color: var(--sidebar-color);
+    position: fixed;
+    font-size: clamp(1rem, 2.2vw, 3rem);
+    height: 100dvh;
+    width: clamp(220px, 20vw, 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 0 30px 6px;
+}
+
+
+
+.sidebar__nav {
+    flex: 1;
+    display: flex;
+}
+
+.sidebar__nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    gap: 30px;
+    width: 100%;
+}
+
+
+.sidebar__item {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    text-transform: uppercase;
+    padding-right: 6px;
+    color: var(--dark-color);
+    border-radius: 36px 0 0 36px;
+    position: relative;
+}
+
+.sidebar_item span{
+    padding: 12px;
+    font-size: 2rem;
+}
+
+.sidebar__item a {
+    color: inherit;
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.sidebar__form {
+    display: flex !important;
+    align-items: center; /* Alinea el checkbox con los demás elementos */
+    position: relative;
+    margin-bottom: 1rem; /* Espacio debajo si es necesario */
+    left: 97%;
+    z-index: 100;
+}
+
+.sidebar label {
+    position: relative;
+    color: var(--bg-color);
+    background-color: var(--sidebar-color);
+    font-size: 2rem;
+    border-radius: 50%;
+    padding: .4rem;
+    left: 2.9%;
+}
+.sidebar__item:hover {
+    background-color: var(--bg-color);
+    color: var(--sidebar-color);
+}
+
+.sidebar__item::before,
+.sidebar__item::after {
+    content: '';
+    background-color: var(--bg-color);
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+}
+
+.sidebar__item:hover::before {
+    border-bottom-right-radius: 25px;
+    top: -18px;
+    box-shadow: 4px 4px 0 4px var(--bg-color);
+}
+
+.sidebar__picture {
+    margin-left: 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar__picture img {
+    width: clamp(4rem, 75%, 20rem);
+    margin: auto;
+    opacity: .92;
+}
+
+.sidebar__item:hover::after {
+    border-top-right-radius: 25px;
+    bottom: -18px;
+    box-shadow: 4px -4px 0 4px var(--bg-color);
+}
+
+.sidebar__profile img{
+    border-radius: 50%;
+    width: 3.5rem;
+}
+
+.item--profile .profile-option {
+    font-size: .9rem;
+    padding: 0 12px 0 9px;
+    color: inherit;
+}
+
+.item--profile {
+    margin:10px;
+    top: -20px;
+    color: var(--dark-color);
+    width: fit-content;
+}
+
+
+.item--profile:hover {
+    border-radius: 25px;
+    color: var(--sidebar-color);
+}
+
+.item--profile::before, .item--profile::after {
+    display: none;
+}
+
+
+input[type= "checkbox"] {
+    display: none;
+
+}
+
+.sidebar label::before,
+.sidebar label::after {
+    content: '';
+    background-color: var(--sidebar-color);
+    position: absolute;
+    width: 13px;
+    height: 25px;
+    background-color: transparent;
+}
+
+.sidebar__form .open-button {
+    display: none;
+}
+
+.sidebar label::before {
+    top: -25px;
+    left: 19px;
+    border-top-right-radius: 25px;
+    box-shadow: 4px 4px 0 4px var(--bg-color);
+    display: none;
+}
+
+.sidebar label::after {
+    bottom: -25px;
+    left: 19px;
+    border-top-right-radius: 25px;
+    box-shadow: 4px -4px 0 4px var(--bg-color);
+    display: none;
+}
+
+input[type= "checkbox"]:checked ~ label {
+    color: var(--bg-color);
+    background-color: var(--sidebar-color);
+}
+
+input[type= "checkbox"]:checked ~ label:after,
+input[type= "checkbox"]:checked ~ label:before {
+    display: none;
+}
+
+.sidebar:has(input[type= "checkbox"]:checked) {
+    width: fit-content;
+}
+
+.sidebar:has(input[type= "checkbox"]:checked) picture {
+    width: fit-content;
+    margin-left: 12px;
+}
+
+.sidebar:has(input[type= "checkbox"]:checked) :is(.sidebar__item a, .profile-option) {
+    display: none;
+}
+
+.sidebar:has(input[type= "checkbox"]:checked) .sidebar__picture img {
+    display: none;
+}
+
+.sidebar:has(input[type= "checkbox"]:checked) .sidebar__form label {
+    display: none;
+}
+
+.sidebar:has(input[type= "checkbox"]:checked) .sidebar__form .open-button {
+    display: block;
+}

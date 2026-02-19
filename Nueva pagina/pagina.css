@@ -1,0 +1,773 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scrollbar-color: #7a2fdb #fff;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #e2eaff;
+    color: #101632dd;
+}
+
+body, div, ul, nav, header, footer, a, li, label {
+    margin: 0;
+    padding: 0;
+}
+
+/* ----- Header y Menú Responsivo ----- */
+
+.header__logo {
+    width: 100px;
+    height: 100px;
+    background-image: url(logo11.png);
+    position: center;
+    background-size: cover; 
+    margin-top: 10px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+@keyframes logo-animation {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(340px); }
+    100% { transform: translateX(0); }
+}
+
+.header__logo:hover {
+    animation: logo-animation 4s ease-in-out;
+}
+
+.animation-example {
+    --animation-name: example-animation;
+    --animation-duration: 8s;
+    --animation-timing-function: ease-in-out;
+    --animation-delay: 1s;
+    --animation-iteration-count: infinite;
+    --animation-direction: normal;
+    --animation-fill-mode: forwards;
+}
+
+
+.header {
+    font-family: pacifico;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    padding: 10px 20px; /* Reducido padding para hacer el header más pequeño */
+    height: 60px;  /* Reducir la altura del header */
+    color: #26a;
+}
+
+/* Botón del menú de navegación */
+.header__open-nav-button {
+    color: #26a;
+    font-size: 2rem;  /* Reducir el tamaño para que el botón sea más pequeño */
+    font-weight: 600;
+    position: absolute;
+    right: 20px;
+    display: block;
+    z-index: 6;
+}
+
+.header__checkbox {
+    display: none; /* Ocultar la casilla de verificación del menú */
+}
+
+/* Estilo del menú, oculto por defecto */
+.header__nav {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    outline: 2px solid transparent;
+    position: absolute;
+    top: 60px; /* Colocar el menú justo debajo del header */
+    left: 0;
+    right: 0;
+    z-index: 4;
+    height: auto; /* El menú no debe ocupar toda la pantalla */
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;  /* Alineación de los elementos del menú */
+    padding: 20px 0; /* Espaciado reducido */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1); /* Agregar sombra para un estilo más moderno */
+}
+
+/* Mostrar el menú cuando se selecciona el checkbox */
+.header__checkbox:checked ~ .header__nav {
+    display: flex;  /* Mostrar el menú */
+}
+
+/* Estilo para los elementos del menú */
+.header__nav-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center; /* Centrar los elementos del menú */
+    gap: 20px;  /* Espaciado entre los elementos */
+}
+
+.header__nav-item {
+    list-style: none;
+}
+
+.header__nav-item a {
+    color: #26a;
+    text-decoration: none;
+    font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande */
+    padding: 10px 20px; /* Espaciado alrededor de los enlaces */
+    transition: all 0.3s ease; /* Transición suave para los efectos de hover */
+}
+
+/* Efecto de hover para los enlaces */
+.header__nav-item a:hover,
+.header__nav-item a:active {
+    text-decoration: underline;
+    font-size: 25px;
+    color: #7a2fdb;
+}
+
+h1:hover {
+    color: #7a2fdb;
+}
+
+.habilidades:hover {
+    color: #7a2fdb;
+}
+
+/* ----- En pantallas grandes ----- */
+@media screen and (min-width: 600px) {
+    .header {
+        padding: 15px 40px; /* Padding más grande para pantallas más grandes */
+        height: 80px;  /* Aumentar ligeramente la altura */
+        animation: header-movement both;
+        animation-timeline: scroll();
+        position: sticky;
+        top: 0;
+        animation-range: 10px 100px;
+    }
+
+    .header__logo {
+        width: 100px; /* Tamaño fijo, asegúrate que no cambie */
+        height: auto; /* Mantener la proporción */
+        margin: 10px 20px;
+        object-fit: contain; /* Asegura que no se distorsione */
+    }
+
+    /* Hacer que el menú se muestre horizontalmente en pantallas grandes */
+    .header__nav {
+        display: flex;
+        position: static;
+        justify-content: flex-start;
+        height: auto;
+        width: auto;
+        flex-direction: row;
+        align-items: center;
+        background-color: initial;
+        box-shadow: none; /* Eliminar sombra en pantallas grandes */
+        padding: 0;
+    }
+
+    .header__nav-list {
+        flex-direction: row; /* Hacer que los elementos se alineen en una fila */
+        gap: 30px;  /* Espaciado entre los enlaces */
+    }
+
+    .header__open-nav-button {
+        display: none;  /* Ocultar el botón de menú en pantallas grandes */
+    }
+}
+
+/* ----- Para pantallas pequeñas ----- */
+@media (max-width: 600px) {
+    .header__logo {
+        width: 80px; /* Mantener el tamaño del logo fijo en pantallas pequeñas */
+        height: auto; /* Mantener la proporción */
+    }
+
+    .header {
+        animation: header-movement both;
+        animation-timeline: scroll();
+        position: sticky;
+        top: 0;
+        animation-range: 10px 100px;
+    }
+}
+
+
+/* ----- Perfil ----- */
+.profile {
+    container-name: profile;
+    container-type: inline-size;
+    position: relative;
+    z-index: 3; /* Asegura que el contenido no se tape con el menú */
+    animation: aparecer 2.4s -.6s both;
+}
+
+.profile__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    max-width: 1400px;
+    z-index: 2; /* Asegura que el contenido esté por encima del menú */
+}
+
+.profile__img {
+    max-width: 100%;
+    width: 720px;
+}
+
+.profile__img-container {
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.profile__data-container {
+    max-width: 600px;
+    padding: 12px;
+}
+
+h1 {
+    color: #26a;
+}
+
+.profile__skills-container h2 {
+    color: #26a;
+}
+
+.profile__skill {
+    list-style: none;
+    display: flex;
+    margin: 10px;
+    max-width: 600px;
+    margin-left: 0;
+    align-items: center;
+}
+
+.profile__skill-name:hover{
+    color: #7a2fdb;
+}
+
+.load-bar:hover {
+    color: #a32cc4;
+}
+
+.profile__skill-name{
+    color: #26a;
+}
+.load-bar {
+    border: linear-gradient(135deg, #26a 0%, #7a2fdb 50%, #a32cc4 100%);
+    border-radius: 8px;
+    color: #fff;
+    padding: 2px;
+    font-size: 12px;
+    width: 80%;
+    margin: 4px;
+    margin-left: 0;
+}
+
+.load-bar__bar {
+    background: linear-gradient(135deg, #26a 0%, #7a2fdb 50%, #a32cc4 100%);
+    border-radius: 4px;
+    padding: 4px 6px;
+}
+
+.bar--60 {
+    width: 60%;
+}
+
+/* ----- Perfil Queries (pantallas grandes) ----- */
+@container profile (min-width: 720px) {
+    .profile__wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: transparent;
+        height: 100vh;
+        margin: auto;
+    }
+
+    .profile__data-container{
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0px 25px 25px 0px;
+        flex-grow: 1;
+        box-shadow: 0px 0px 9px #0002;
+        max-width: 50%;
+    }
+
+    h1 {
+        margin-top: 0;
+        font-size: 2rem;
+        text-wrap: balance;
+        max-width: 100%;
+        text-align: center; 
+    }
+
+    .profile__data {
+        max-width: 620px;
+    }
+
+    .profile__img-container {
+        flex-shrink: 0;
+        max-width: 50%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile__img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+
+/* ----- portfolio section ----- */
+
+.portfolio {
+    font-family: pacifico;
+    background: linear-gradient(135deg, #26a 0%, #7a2fdb 50%, #a32cc4 100%);
+    color: #fff;
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    container-name: portfolio;
+    container-type: inline-size;
+    justify-content: space-evenly;
+}
+
+.portfolio__project {
+    transition: 0.3s;
+}
+
+.portfolio__project {
+    transition: 0.3s;
+}
+
+.portfolio__project:hover {
+    animation: neonBlink 0.15s infinite alternate;
+}
+
+@keyframes neonBlink {
+    0% {
+    box-shadow: 0 0 5px #26a, 0 0 10px #7a2fdb, 0 0 15px #a32cc4;
+    opacity: 1;
+    }
+    50% {
+    box-shadow: 0 0 15px #26a, 0 0 30px #7a2fdb, 0 0 45px #a32cc4;
+    opacity: 0.8;
+    }
+    100% {
+    box-shadow: 0 0 5px #26a, 0 0 10px #7a2fdb, 0 0 15px #a32cc4;
+    opacity: 0.6;
+    }
+}
+
+.portfolio__project-name:hover{
+    color:#7a2fdb;
+}
+
+.portfolio__project-name:hover{
+    color:#7a2fdb;
+}
+.portfolio__project-name a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.hidden-text {
+    display: none;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.portfolio__project-name:hover .hidden-text {
+    display: block;
+    font-size: 20px; 
+}
+
+a:hover + .hidden-text {
+    display: block;
+}
+
+.portfolio__project-name a:hover{
+    color:#7a2fdb;
+}
+
+.portfolio__tiitle:hover{
+    color:#7a2fdb;
+}
+
+.portfolio__title {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.portfolio__project-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1300px;
+    margin: auto;
+    width: 100%;
+    gap: 12px;
+    padding: 12px;
+    min-height: 80vh;
+}
+
+.portfolio__project {
+    background-image: linear-gradient(#0009, rgba(131, 2, 2, 0.4)), url(logo.png);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    place-content: center;
+    border-radius: 8px;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 40%;
+}
+
+
+.portfolio__project:hover {
+    opacity: 0.74;
+    outline: 2px solid #fff;
+}
+
+
+
+/* ----- portfolio queries ----- */
+
+@container portfolio (min-width: 56.25rem) {
+    .portfolio__project-container{
+        grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+    }
+
+    .portfolio__project:first-child{
+        grid-column: span 2;
+    }
+
+    .portfolio__project:nth-child(6){
+        grid-column: span 2;
+    }
+}
+
+
+/* ----- portfolio Ends ----- */
+
+
+/* ----- Contacto ----- */
+
+.form {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    container-name: form;
+    container-type: inline-size;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% contain 40%;
+}
+
+.form__form {
+    padding: 12px;
+    max-width: 600px;
+    width: 100%;
+    display: grid;
+}
+
+.form__input-container :is(input, textarea) {
+    width: 100%;
+    padding: 9px;
+    font-size: 16px;
+    margin: 4px;
+    border: none;
+    box-shadow: 2px 2px 4px #003;
+    background-color: #fffd;
+}
+
+.form__input-container textarea {
+    resize: none;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.form__input-container input[type="submit"] {
+    border: 2px solid transparent;
+    color: #fff;
+    background: linear-gradient(135deg, #26a 0%, #7a2fdb 50%, #a32cc4 100%);
+    font-size: 18px;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.8s ease-in-out;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: neon-glow 0.1s infinite alternate;
+    box-shadow: 0 0 15px #26a, 0 0 30px #7a2fdb, 0 0 60px #a32cc4;
+}
+
+.form__input-container input[type="submit"]:hover {
+    box-shadow: 0 0 25px #26a, 0 0 50px #7a2fdb, 0 0 75px #a32cc4;
+    background: linear-gradient(135deg, #26a 0%, #7a2fdb 50%, #a32cc4 100%);
+    color: #ffffff;
+    animation: flicker 0.1s infinite alternate;
+}
+
+
+
+@keyframes neon-glow {
+    0% {
+        box-shadow: 0 0 10px #26a, 0 0 20px #7a2fdb, 0 0 40px #a32cc4;
+    }
+    50% {
+        box-shadow: 0 0 15px #26a, 0 0 30px #7a2fdb, 0 0 60px #a32cc4;
+    }
+    100% {
+        box-shadow: 0 0 10px #26a, 0 0 20px #7a2fdb, 0 0 40px #a32cc4;
+    }
+}
+
+.header__nav-item {
+    transform: rotate(0deg);
+    transition: transform 1s;
+}
+
+.header__nav-item:hover {
+    transform: rotate(360deg);
+}
+
+
+.form__title {
+    font-size: 2rem;
+}
+
+/* ----- Contacto queris ----- */
+
+@container form (min-width: 56.25rem) {
+    .form__form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "nombre apellidos"
+        "email email"
+        "mensaje mensaje"
+        "button button";
+        gap: 12px;
+        background-image: radial-gradient(#18233f06,#18233f33);
+        pad: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 40px #0006;
+        margin-bottom: 30px;
+    }
+
+    
+    
+    .form__input-container:first-child{
+        grid-area: nombre;
+    }
+    .form__input-container:nth-child(2){
+        grid-area: apellidos;
+    }
+
+
+    .form__input-container:nth-child(3){
+        grid-area: email;
+    }
+
+    .form__input-container:nth-child(4){
+        grid-area: mensaje;
+    }
+
+    .form__input-container:nth-child(5){
+        grid-area: button;
+    }
+    .form__input-container :is(input, textarea) {
+        box-shadow: none;
+        border-radius: 4px;
+    }
+}
+
+.form {
+    font-family: pacifico;
+}
+
+/*-----contactos end-----*/
+
+
+/*-----Footer sections-----*/
+
+footer {
+    font-family: pacifico;
+    padding: 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #26a 0%, #7a2fdb 50%, #a32cc4 100%);
+    color: #fffd;
+    font-size: 22px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: center;
+}
+
+
+#copy {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+#media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    flex: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.75);
+    flex: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.social1:hover{
+    box-shadow: 13px 31px 63px 23px rgba(4, 155, 255, 0.75);
+    transform: scale(1.5);
+}
+
+.social2:hover{
+    box-shadow: 13px 31px 63px 23px rgba(250, 0, 0, 0.75);
+    transform: scale(1.5);
+}
+
+.social1, .social2 {
+    border-radius: 20%;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.social1, .social2 {
+    display: inline-block;
+    transition: transform 4s ease-in-out;
+}
+
+.social1:hover {
+    animation: moveRight 4s ease-in-out alternate;
+}
+
+.social2:hover {
+    animation: moveLeft 4s ease-in-out alternate;
+}
+
+@keyframes moveLeft {
+    0% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(30vw) scale(1.5); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes moveRight {
+    0% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(-30vw) scale(1.5); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+
+.btn-1 {
+    border-color: #48e;
+    color: rgb(111, 168, 255);
+    box-shadow: 0px 0px 6px #48e4, 0px 0px 6px #48e5;
+    text-shadow: 0px 0px 9px #48ee, 0px 0px 3px rgba(159, 197, 255, 0.454);
+    animation: parpadear 3s infinite alternate backwards;
+}
+
+/*-----Animaciones------*/
+
+@keyframes header-movement {
+    from {
+        padding: 20px 0;
+        background-color: #fff;
+        color: #fff;
+    }
+    to {
+        padding: 20px 0;
+        background-color: #0006;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} 
+
+.profile__img:hover {
+    transform: perspective(360px) rotateX(360deg);
+}
+
+img {
+    width: 200px;
+    transition: transform 3s;
+}
+
+.form__title {
+    color:#26a;
+}
+
+.form__title:hover {
+    color: #7a2fdb;
+}
+
+.form__input-container {
+    color:#26a;
+}
+
+.form__input-container:hover {
+    color:#7a2fdb;
+}
+
+#copy:hover{
+    color: #a32cc4;
+}

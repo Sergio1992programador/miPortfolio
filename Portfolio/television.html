@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Televisión</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('../Css\ y\ Html\ páginas/simpsons1.png');
+            background-size: cover;         
+            background-repeat: no-repeat;   
+            background-position: center;    
+            height: 100vh;                  
+        }
+
+        img{
+            width: 1300px;
+            height: auto;
+            background-size: cover;
+        }
+
+        @keyframes mano-entrando {
+                0% {
+                    transform: translate(-1000px, -1000px) scale(0.3);
+                    opacity: 0;
+                }
+                60% {
+                    transform: translate(10px, 10px) scale(1.1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
+}
+        #video{
+            background-color: rgb(0, 0, 0);
+            width: 500px;
+            height: 400px;
+            border-radius: 25px;
+            position: absolute;
+            top: 210px;
+            left: 360px;
+
+        }
+
+        #botones{
+            background-color: #8d81c0;
+            width: 95px;
+            left: 860px;
+            top: 220px;
+            position: absolute;
+            height: 360px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        #imagen-botones{
+            width: 163px;
+            top: 0px;
+            height: 300px;
+        }
+
+        #video-uno{
+            width: 499.999px;
+            height: 610px;
+            border-radius: 50px;
+            position: absolute;
+            top: -100px;
+            left: 0px;
+            
+        }
+
+        #television {
+            position: relative;
+        }
+
+        .botones{
+            background-image: url(btns.jpg);
+            height: 40px;
+            width: 40px;
+            min-width: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            gap: 30px;
+            
+        }
+        .rapida{
+            background-position: -122px 526px;
+        }
+
+        .lenta{
+            background-position: -162px 526px;
+        }
+
+        .mute{
+            background-position: -483px 526px;
+        }
+
+        .play-azul{
+            background-position: -4px 301px;
+        }
+
+        .pause-azul{
+            background-position: -281px 301px;
+        }
+
+        #rapido-cinco{
+            background-position: -202px 301px;
+        }
+
+        #rapido-cinco:active{
+            background-position: -202px 526px;
+        }
+
+        #lento-cinco{
+            background-position: -241px 301px;
+        }
+        #lento-cinco:active{
+            background-position: -241px 526px;
+        }
+
+        #volumen-max{
+            background-position: 80px 301px;
+        }
+
+        #volumen-max:active{
+            background-position: 80px 526px;
+        }
+
+        #volumen-min{
+            background-position: 40px 301px;
+        }
+
+        #volumen-min:active{
+            background-position: 40px 526px;
+        }
+
+        .rapida-azul{
+            background-position: -123px 301px;
+        }
+
+        .lenta-azul{
+            background-position: -162px 301px;
+        }
+
+        #stop{
+            background-position: -443px 301px;
+        }
+
+        #stop:active{
+            background-position: -443px 526px;
+        }
+
+        .mute-rojo{
+            background-position: -483px 564px;
+        }
+
+        .mute{
+            background-position: -483px 301px;
+        }
+
+        .play-verde{
+            background-position: -4px 526px;
+        }
+
+        .pause-verde{
+            background-position: -281px 526px;
+        }
+
+        #mute:active{
+            background-position: -483px 526px;
+        }
+
+        #tiempo{
+            position: absolute;
+            top: 350px;
+            color: white;
+            left: 30px;
+            
+        }
+
+        
+
+
+        
+
+    </style>
+</head>
+<body>
+    
+    <div id="television">
+        <div id="video">
+            <video id="video-uno">
+                <source src="../Css y Html páginas/topuria.mp4">
+            </video>
+            <p id="tiempo">Tiempo: 0 segundos</p>
+        </div>
+        <div id="botones">
+            <button id="play" class="botones play-azul" title="Play"></button>
+            <button id="pause" class="botones pause-azul" title="Pause"></button>
+            <button id="rapido-cinco" class="botones" title="Avanza cinco segundos"></button>
+            <button id="lento-cinco" class="botones" title="Retrocede cinco segundos"></button>
+            <button id="volumen-max" class="botones" title="Sube el volumen"></button>
+            <button id="volumen-min" class="botones" title="Baja el volumen"></button>
+            <button id="reproduccion-rapida" class="botones rapida-azul" title="Reproducción rápida"></button>
+            <button id="reproduccion-lenta" class="botones lenta-azul" title="Reproducción lenta"></button>
+            <button id="stop" class="botones" title="Stop"></button>
+            <button id="mute" class="botones mute" title="Mute"></button>
+        </div>
+    </div>
+    <script>
+        let play = document.querySelector("#play");
+        let pause = document.querySelector("#pause");
+        let rapidoCinco = document.querySelector("#rapido-cinco");
+        let lentoCinco = document.querySelector("#lento-cinco");
+        let max = document.querySelector("#volumen-max");
+        let min = document.querySelector("#volumen-min");
+        let rapida = document.querySelector("#reproduccion-rapida");
+        let lenta = document.querySelector("#reproduccion-lenta");
+        let stop = document.querySelector("#stop");
+        let mute = document.querySelector("#mute");
+        let video = document.querySelector("#video-uno");
+        function botonPlay(){
+            video.play();
+            video.playbackRate = 1;
+            play.classList.remove("play-azul");
+            play.classList.add("play-verde");
+            pause.classList.remove("pause-verde");
+            pause.classList.add("pause-azul");
+            lenta.classList.add("lenta-azul");
+            lenta.classList.remove("lenta");
+            rapida.classList.add("rapida-azul");
+            rapida.classList.remove("rapida");
+        }
+
+        function botonPause(){
+            video.pause();
+            pause.classList.remove("pause-blanco");
+            pause.classList.add("pause-verde");
+            play.classList.remove("play-verde");
+            play.classList.add("play-azul");
+            lenta.classList.add("lenta-azul");
+            lenta.classList.remove("lenta");
+            rapida.classList.add("rapida-azul");
+            rapida.classList.remove("rapida");
+        }
+
+        function botonStop(){
+            video.pause();
+            video.currentTime = 0;
+            play.classList.remove("play-verde");
+            pause.classList.remove("pause-verde");
+            pause.classList.add("pause-azul");
+            play.classList.add("play-azul");
+            rapida.classList.remove("rapida");
+            rapida.classList.add("rapida-azul")
+            lenta.classList.remove("lenta");
+            lenta.classList.add("lenta-azul");
+        }
+
+        function botonMas(){
+            if(video.volume < 1){
+                video.volume = video.volume + 0.1;
+            }
+
+            if(video.volume > 0.9){
+                console.log("El volumen está al máximo");
+            }
+        }
+
+        function botonMenos(){
+            if(video.volume >= 0.1){
+                video.volume = video.volume - 0.1;
+            }
+
+            if(video.volume < 0.1){
+                console.log("El volumen está al mínimo");
+            }
+        }
+
+        function adelantarCinco(){
+            video.currentTime = video.currentTime + 5;
+        }
+
+        function atrasarCinco(){
+            video.currentTime = video.currentTime - 5;
+        }
+
+        function camaraRapida(){
+                if(video.playbackRate <= 15.9){
+                    video.playbackRate = video.playbackRate + 0.2;
+                }
+                if(video.playbackRate >= 15.9){
+                    console.log("La velocidad está al máximo");
+                }
+
+                if(video.playbackRate > 1){
+                    rapida.classList.remove("rapida-azul");
+                    rapida.classList.add("rapida");
+                    lenta.classList.remove("lenta");
+                lenta.classList.add("lenta-azul");
+                }
+
+            console.log(video.playbackRate);
+            play.classList.remove("play-verde");
+            play.classList.add("play-azul");
+            pause.classList.remove("pause-verde");
+            pause.classList.add("pause-azul");
+            video.play();
+
+            if(video.playbackRate == 1){
+                    play.classList.remove("play-azul");
+                    play.classList.add("play-verde");
+                    lenta.classList.remove("lenta");
+                    lenta.classList.add("lenta-azul");
+                }
+            
+        }
+
+        function camaraLenta(){
+            if(video.playbackRate >= 0.3){
+                video.playbackRate = video.playbackRate - 0.2;
+                console.log(video.playbackRate);
+            }
+            
+
+            if(video.playbackRate <= 0.3){
+                console.log("La velocidad está al mínimo");
+            }
+
+            if(video.playbackRate < 1){
+                lenta.classList.remove("lenta-azul");
+                lenta.classList.add("lenta");
+                rapida.classList.remove("rapida");
+                rapida.classList.add("rapida-azul");
+            }
+
+            play.classList.remove("play-verde");
+            play.classList.add("play-azul");
+            pause.classList.remove("pause-verde");
+            pause.classList.add("pause-azul");
+            video.play();
+            
+            if(video.playbackRate == 1){
+                    play.classList.remove("play-azul");
+                    play.classList.add("play-verde");
+                    rapida.classList.remove("rapida");
+                    rapida.classList.add("rapida-azul");
+                }
+                
+
+        }
+
+        function botonMute(){
+                /*if(video.muted){
+                video.muted = false;
+                mute.classList.remove("mute-rojo");
+                mute.classList.add("mute");
+                }
+                else{
+                    video.muted = true;
+                    mute.classList.remove("mute");
+                    mute.classList.add("mute-rojo");
+                }*/
+                video.muted = !video.muted;
+                mute.classList.toggle("mute-rojo");
+                mute.classList.toggle("mute");
+        }
+
+        let tiempo = document.querySelector("#tiempo");
+
+        function mostrarTiempo() {
+            let segundos = video.currentTime; 
+            tiempo.innerHTML = "Tiempo: " +parseInt(segundos) +" segundos";
+            if(segundos >= 60){
+                let minuto = Math.floor(segundos / 60);
+                let seg = parseInt(segundos % 60);
+
+                if(segundos < 120){
+                    tiempo.innerHTML = "Tiempo: " +minuto +" minuto " +seg +" segundos ";
+
+                }else{
+                    tiempo.innerHTML = "Tiempo: " +minuto +" minutos " +seg +" segundos ";
+                } 
+            }
+
+        }       
+
+        setInterval(mostrarTiempo, 1000);
+
+
+
+        play.addEventListener("click", botonPlay);
+        pause.addEventListener("click", botonPause);
+        stop.addEventListener("click", botonStop);
+        max.addEventListener("click", botonMas);
+        min.addEventListener("click", botonMenos);
+        rapidoCinco.addEventListener("click", adelantarCinco);
+        lentoCinco.addEventListener("click", atrasarCinco);
+        rapida.addEventListener("click", camaraRapida);
+        lenta.addEventListener("click", camaraLenta);
+        mute.addEventListener("click", botonMute);
+        
+        const rutaMano = "mano-simpsons.png"; 
+
+const botonesTV = document.querySelectorAll(".botones");
+
+botonesTV.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const rect = e.target.getBoundingClientRect();
+
+        const mano = document.createElement("img");
+        mano.src = rutaMano;
+        mano.style.position = "absolute";
+        mano.style.width = "100px";
+        mano.style.zIndex = "1000";
+        mano.style.pointerEvents = "none";
+        mano.style.opacity = "1";
+        mano.style.transition = "opacity 0.3s ease";
+
+        
+        mano.style.left = (rect.left + window.scrollX - 40) + "px";
+        mano.style.top = (rect.top + window.scrollY - 30) + "px";
+
+        
+        mano.style.animation = "mano-entrando 0.5s ease-out";
+
+        document.body.appendChild(mano);
+
+        
+        setTimeout(() => {
+            mano.style.opacity = "0";
+            setTimeout(() => {
+                mano.remove();
+            }, 1000);
+        }, 800);
+    });
+});
+
+// 1. Ruta de la imagen de fondo que usabas en CSS
+const rutaFondo = '../Css y Html páginas/simpsons1.png';
+
+// 2. Crear la imagen de fondo que cubra todo (ancho y alto, sin mantener proporción)
+const imgFondo = document.createElement('img');
+imgFondo.src = rutaFondo;
+imgFondo.style.position = 'fixed';
+imgFondo.style.top = '0';
+imgFondo.style.left = '0';
+imgFondo.style.width = '100vw';   // ancho total ventana
+imgFondo.style.height = '100vh';  // alto total ventana
+imgFondo.style.objectFit = 'fill'; // rellena ancho y alto distorsionando si es necesario
+imgFondo.style.zIndex = '-1';
+imgFondo.style.userSelect = 'none';
+imgFondo.style.pointerEvents = 'none';
+
+// Insertar la imagen de fondo al inicio del body
+document.body.insertBefore(imgFondo, document.body.firstChild);
+
+// 3. Crear un contenedor para todo el contenido existente excepto la imagen de fondo
+const contenedor = document.createElement('div');
+contenedor.id = 'contenedor-escalable';
+contenedor.style.position = 'relative';
+contenedor.style.transformOrigin = 'top left';
+
+// 4. Definir tamaño base de diseño (ajusta según tu layout original)
+const anchoBase = 1300;  // por ejemplo, ancho del video u otro elemento principal
+const altoBase = 700;    // altura base estimada para todo el contenido
+
+contenedor.style.width = anchoBase + 'px';
+contenedor.style.height = altoBase + 'px';
+
+// 5. Mover todos los nodos hijos excepto la imagen de fondo dentro del contenedor
+// El img de fondo es el primer hijo, lo dejamos fuera
+while (document.body.childNodes.length > 1) {
+    contenedor.appendChild(document.body.childNodes[1]);
+}
+document.body.appendChild(contenedor);
+
+// 6. Función para escalar el contenedor según tamaño ventana (a lo ancho y alto)
+function escalarContenedor() {
+    const escalaX = window.innerWidth / anchoBase;
+    const escalaY = window.innerHeight / altoBase;
+
+    // Escalamos a ambos ejes independientemente para que rellene TODO (sin mantener proporción)
+    contenedor.style.transform = `scale(${escalaX}, ${escalaY})`;
+
+    // Ajustar el body para que no haga scroll
+    document.body.style.width = window.innerWidth + 'px';
+    document.body.style.height = window.innerHeight + 'px';
+    document.body.style.overflow = 'hidden';
+}
+
+// 7. Ejecutar al cargar y al redimensionar ventana
+window.addEventListener('load', escalarContenedor);
+window.addEventListener('resize', escalarContenedor);
+
+
+    </script>
+</body>
+</html>

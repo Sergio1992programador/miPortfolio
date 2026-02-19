@@ -1,0 +1,37 @@
+.card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    width: 600px;
+    margin: 30px;
+}
+
+.card:hover {
+    background-color: #FFE53B;
+    border-radius: 20px;
+}
+
+.card:hover {
+    box-shadow: 10px 5px 5px #0192B6;
+}
+
+body {
+    background-image: url("lossimpsonss.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+
+}
+
+h1 {
+    color: aliceblue;
+}
+
+h1:hover {
+    color: #FFE53B;
+}
+
+img {
+    width: 250px;
+}

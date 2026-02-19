@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel ="stylesheet" />
+    <title>Sidebar</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <form class="sidebar__form">
+            <input type="checkbox" id="open-menu">
+            <label class="material-symbols-outlined"
+            for="open-menu">close</label>
+            <label class="material-symbols-outlined
+            open-button" for="open-menu">open_in_full</label>
+        </form>
+        <picture class="sidebar__picture">
+            <source srcset="logo11_inner_smaller.png" media="(max-width:57.5rem)">
+            <img src="logo11.png" alt="Logo">
+        </picture>
+        <nav class="sidebar__nav">
+            <ul>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">Notifications</span>
+                    <a href="#">Notificaciones</a>
+                </li>
+
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">mail</span>
+                    <a href="#">Mensajes</a>
+                </li>
+
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <a href="#">Comprar</a>
+                </li>
+
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">account_balance</span>
+                    <a href="#">Saldo de la cuenta</a>
+                </li>
+
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">settings</span>
+                    <a href="#">Configuración</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar__profile">
+            <ul>
+                <li class="sidebar__item
+                item--profile">
+                    <img src="logo11_inner_smaller.png">
+                    <span class="profile-option">Mi perfil</span>
+                </li>
+                <li class="sidebar__item">
+                    <span class="material-symbols-outlined">logout</span>
+                    <a href="#">Cerrar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</body>
+</html>

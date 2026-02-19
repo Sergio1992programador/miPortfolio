@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pagina.css">
+    <link rel="shortcut icon" href="./logo11.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <title>Sergio Vallejo</title>
+</head>
+<body>
+    <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__open-nav-button" role="button">=</label>
+        <div class ="header__logo-container "id ="boxx">
+        <div class="example animation-example"></div>
+            <img class="header__logo" src="logo11.png">
+            </div>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="#profile">Acerca</a></li>
+                <li class="header__nav-item"><a href="#portfolio">Portafolio</a></li>
+                <li class="header__nav-item"><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="profile" id="profile">
+        <div class="profile__wrapper">
+            <div class="profile__image-container">
+                <img src="logo.png" class="profile__img">
+            </div>
+            <div class="profile__data-container">
+                <div class="profile__data">
+                    <div class="profile__description">
+                        <h1>Sergio Vallejo Escorihuela</h1>
+                        <p>Soy un apasionado del diseño web, creando experiencias digitales con HTML y CSS como mis mejores herramientas. No soy un gurú del código, pero cuando se trata de estructurar una página y darle estilo, sé exactamente cómo hacer que todo cobre vida.
+
+                        Me encanta transformar ideas en interfaces limpias, funcionales y atractivas. Desde maquetas hasta diseños responsivos, me aseguro de que cada línea de código tenga un propósito y cada pixel esté en su lugar.
+                            
+                        Siempre estoy aprendiendo y mejorando, porque el mundo del desarrollo web nunca se detiene. Si buscas a alguien que convierta una idea en una web bien estructurada y estilizada, hablemos.</p>
+                    </div>
+                    <div class="profile__skills-container">
+                        <h2 class="habilidades">Habilidades</h2>
+                        <ul>
+                            <li class="profile__skill">
+                                <div class="load-bar">
+                                    <div class="load-bar__bar bar--100%">100%</div>
+                                </div>
+                                <span class="profile__skill-name">HTML</span>
+                            </li>
+
+                            <li class="profile__skill">
+                                <div class="load-bar">
+                                    <div class="load-bar__bar bar--100%">100%</div>
+                                </div>
+                                <span class="profile__skill-name">CSS</span>
+                            </li>
+
+                            <li class="profile__skill">
+                                <div class="load-bar">
+                                    <div class="load-bar__bar bar--60">60%</div>
+                                </div>
+                                <span class="profile__skill-name">JS</span>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+    <section class="portfolio" id="portfolio">
+        <h2 class="portfolio__tiitle">Portafolio</h2>
+        <div class="portfolio__project-container">
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name"><a href="https://www.figma.com/proto/j8oTGO8M3DggZtx9yIK4Lv/Untitled?node-id=788-7253&t=M58uORK8QL4TGVh8-1&scaling=scale-down&content-scaling=fixed&page-id=788%3A3845&starting-point-node-id=788%3A3868" target="_blank">Proyecto</a><p class="hidden-text">Este proyecto fue desarrollado en Figma como mi primer trabajo sin conocimientos previos de código. Aunque no cuenta con diseño responsive, lo incluyo en mi portafolio porque refleja mi creatividad y habilidades en diseño de interfaces. A pesar de las limitaciones técnicas, considero que el resultado es visualmente atractivo y muestra mi evolución en el diseño digital.</p></h2>
+            </div>
+
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">Proyecto</h2>
+            </div>
+
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">Proyecto</h2>
+            </div>
+
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">Proyecto</h2>
+            </div>
+
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">Proyecto</h2>
+            </div>
+
+            <div class="portfolio__project">
+                <h2 class="portfolio__project-name">Proyecto</h2>
+            </div>
+        </div>
+    </section>
+    <section class="form" id="contact">
+        <h2 class="form__title">Contacto</h2>
+        <form class="form__form">
+            <div class="form__input-container">
+                <label>nombre:
+                    <input type="text" placeholder="Escriba su nombre">
+                </label>
+            </div>
+
+            <div class="form__input-container">
+                <label>apellidos:
+                    <input type="text" placeholder="Escriba sus apellidos">
+                </label>
+            </div>
+
+            <div class="form__input-container">
+                <label>email:
+                    <input type="email" placeholder="Escriba su email">
+                </label>
+            </div>
+
+            <div class="form__input-container">
+                <label>mensaje:
+                    <textarea placeholder="Escriba su mensaje"></textarea>
+                </label>
+            </div>
+
+            <div class="form__input-container">
+                <input class="btn-1" type="submit" value="Enviar">
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <div id="copy">
+            <p>Sergio Vallejo. Todos los derechos reservados.</p>
+        </div>
+        <div id="media">
+            <a href="https://www.linkedin.com/in/sergio-vallejo-escorihuela-560421305/" target="_blank" title="Ir a linkedin">
+                <img class="social1" src="linkedin.png" alt="Facebook">
+            </a>
+            <a href="https://www.youtube.com/@Exploramundo1992/" target="_blank" title="Ir a Youtube">
+                <img class="social2" src="youtube.jpg" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

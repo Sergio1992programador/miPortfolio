@@ -1,0 +1,175 @@
+
+/* ============================== */
+/* ========== GLOBAL =========== */
+/* ============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============================== */
+/* ========== HEADER =========== */
+/* ============================== */
+
+header {
+  background-color: #26a;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  position: relative;
+}
+
+.header__logo-icon {
+  margin-right: 10px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header__nav-item {
+  margin-left: 20px;
+}
+
+.header__nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.header__nav-link:hover {
+  color: #ff0;
+}
+
+.header__nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.header__nav-toggle span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* ============================== */
+/* ========== MOBILE =========== */
+/* ============================== */
+
+@media (max-width: 768px) {
+  .header__nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #26a;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+  }
+
+  .header__nav.open {
+    display: flex;
+  }
+
+  .header__nav-item {
+    margin: 10px 0;
+    margin-left: 20px;
+  }
+
+  .header__nav-toggle {
+    display: flex;
+  }
+}
+
+/* ============================== */
+/* ======== ANIMATIONS ========= */
+/* ============================== */
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ============================== */
+/* ========== BUTTONS ========== */
+/* ============================== */
+
+.header__nav-link {
+  animation-name: slideInLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.header__nav-link:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.header__nav-link:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.header__nav-link:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.header__nav-link:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.header__nav-toggle {
+  animation: bounce 1s infinite;
+}

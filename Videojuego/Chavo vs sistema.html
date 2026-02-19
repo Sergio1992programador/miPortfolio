@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Sergio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Estilo para la pantalla de inicio */
+    #startScreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('iniciojuego.jpg');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+
+    #startScreen h1 {
+      font-size: clamp(28px, 8vw, 60px);
+      margin-bottom: clamp(15px, 4vw, 30px);
+    }
+
+    #startScreen button {
+      padding: clamp(10px, 3vw, 15px) clamp(20px, 5vw, 30px);
+      font-size: clamp(16px, 4vw, 24px);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+
+    #startScreen button:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    canvas {
+      border: 2px solid #000;
+      display: none;
+      max-width: 100%;
+      max-height: 100vh;
+      touch-action: none;
+    }
+
+    #videoOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    #videoOverlay video {
+      max-width: 90%;
+      max-height: 70%;
+    }
+
+    #videoOverlay h1 {
+      margin-top: 20px;
+      font-size: clamp(14px, 3.5vw, 32px);
+      font-family: "Arial", sans-serif;
+      color: white;
+      padding: 0 16px;
+    }
+
+    /* Estilo del mensaje final */
+    #finalMessage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('final.jpg');
+      background-size: cover;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: rgb(136, 20, 20);
+      text-align: center;
+    }
+
+    #finalMessage h1 {
+      font-size: clamp(18px, 4vw, 40px);
+      margin-bottom: clamp(10px, 3vw, 20px);
+      padding: 0 16px;
+    }
+
+    #finalMessage button {
+      padding: clamp(10px, 3vw, 15px) clamp(20px, 5vw, 30px);
+      font-size: clamp(16px, 4vw, 24px);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+
+    #finalMessage button:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Controles táctiles */
+    #touchControls {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 6px 12px;
+      box-sizing: border-box;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    #touchControls button {
+      pointer-events: all;
+      background-color: rgba(255, 255, 255, 0.20);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      border-radius: 50%;
+      width: clamp(38px, 9vw, 52px);
+      height: clamp(38px, 9vw, 52px);
+      font-size: clamp(14px, 4vw, 20px);
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #touchControls button:active {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .touch-side {
+      display: flex;
+      gap: 10px;
+    }
+
+    @media (max-width: 768px) {
+      #touchControls {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla de inicio -->
+  <div id="startScreen">
+    <button id="playButton">Jugar</button>
+  </div>
+
+  <!-- Canvas del juego -->
+  <canvas id="gameCanvas" width="1200" height="600"></canvas>
+
+  <!-- Video overlay para mostrar videos al pasar de nivel o perder -->
+  <div id="videoOverlay">
+    <video id="levelVideo" controls></video>
+    <h1 id="resultText"></h1>
+  </div>
+
+  <!-- Mensaje final de felicitación -->
+  <div id="finalMessage">
+    <h1>Sergio te da la enhorabuena, has salvado el mundo de la corrupción</h1>
+    <button id="restartButton">Volver al inicio</button>
+  </div>
+
+  <!-- Controles táctiles para móvil -->
+  <div id="touchControls">
+    <div class="touch-side">
+      <button id="btnLeft">◀</button>
+      <button id="btnRight">▶</button>
+    </div>
+    <div class="touch-side">
+      <button id="btnJump">▲</button>
+    </div>
+  </div>
+
+  <script>
+    const startScreen = document.getElementById("startScreen");
+    const playButton = document.getElementById("playButton");
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const videoOverlay = document.getElementById("videoOverlay");
+    const levelVideo = document.getElementById("levelVideo");
+    const resultText = document.getElementById("resultText");
+
+    const finalMessage = document.getElementById("finalMessage");
+    const restartButton = document.getElementById("restartButton");
+
+    // --- RESPONSIVE CANVAS ---
+    function resizeCanvas() {
+      const isMobile = window.innerWidth <= 768;
+      const reservedBottom = isMobile ? 70 : 0; // espacio para botones táctiles
+      const maxW = window.innerWidth;
+      const maxH = window.innerHeight - reservedBottom;
+      const ratio = 1200 / 600;
+      let w = maxW;
+      let h = w / ratio;
+      if (h > maxH) {
+        h = maxH;
+        w = h * ratio;
+      }
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // Música de fondo
+    const backgroundMusic = new Audio("blade.mp3");
+    backgroundMusic.loop = true;
+    let musicStarted = false;
+
+    // Sonido del salto
+    const jumpSound = new Audio("salto.mp3");
+
+    // Videos de nivel completado y de Game Over
+    const winVideos = [
+      "miguelito.mp4",
+      "romano.mp4",
+      "doramion.mp4",
+      "dandy.mp4",
+      "alfonsito.mp4",
+      "trompeta.mp4"
+    ];
+
+    const loseVideos = [
+      "Esguince.mp4",
+      "cohete.mp4",
+      "enchufao.mp4",
+      "bigotuo.mp4",
+      "mijo.mp4",
+      "brutal.mp4"
+    ];
+
+    const backgroundImages = [
+      "londres.jpg",
+      "parlamento.jpg",
+      "madrid.jpg",
+      "mansion.jpg",
+      "casa.jpg",
+      "vaticano.jpg"
+    ];
+
+    const obstacleImages = [
+      "bean.jpg",
+      "pablo.jpg",
+      "rajoy.jpg",
+      "pedro.jpg",
+      "trump.jpg",
+      "papa.jpg"
+    ];
+
+    const characterImg = new Image();
+    characterImg.src = "chavo.jpg";
+
+    const character = {
+      x: 50,
+      y: 500,
+      width: 120,
+      height: 120,
+      gravity: 0.5,
+      jumpPower: 20,
+      velocityY: 0,
+      isJumping: false,
+      speed: 10,
+    };
+
+    const obstacles = [];
+    let backgroundImg = new Image();
+    let currentObstacleImg = new Image();
+
+    const obstacleSpeed = 5;
+    const spawnRate = 150;
+    let spawnCounter = 0;
+
+    let level = 1;
+    let obstaclesCleared = 0;
+    let gameOver = false;
+    let waitingForNextLevel = false;
+    let videoPlaying = false;
+    let gameStarted = false;
+
+    // Estado de teclas táctiles
+    const touchKeys = { left: false, right: false };
+
+    function drawCharacter() {
+      ctx.drawImage(characterImg, character.x, character.y, character.width, character.height);
+    }
+
+    function drawBackground() {
+      ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+    }
+
+    function drawObstacles() {
+      obstacles.forEach(obstacle => {
+        ctx.drawImage(
+          currentObstacleImg,
+          obstacle.x,
+          obstacle.y,
+          obstacle.width,
+          obstacle.height
+        );
+      });
+    }
+
+    function spawnObstacle() {
+      const obstacle = {
+        x: canvas.width,
+        y: canvas.height - 150,
+        width: 120,
+        height: 120,
+        speed: obstacleSpeed,
+      };
+      obstacles.push(obstacle);
+    }
+
+    function updateObstacles() {
+      obstacles.forEach((obstacle, index) => {
+        obstacle.x -= obstacle.speed;
+
+        if (obstacle.x + obstacle.width < 0) {
+          obstacles.splice(index, 1);
+          obstaclesCleared++;
+        }
+      });
+    }
+
+    function checkCollision() {
+      for (const obstacle of obstacles) {
+        if (
+          character.x < obstacle.x + obstacle.width &&
+          character.x + character.width > obstacle.x &&
+          character.y < obstacle.y + obstacle.height &&
+          character.y + character.height > obstacle.y
+        ) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function updateGame() {
+      if (!gameStarted || gameOver || waitingForNextLevel || videoPlaying) return;
+
+      // Movimiento continuo táctil
+      if (touchKeys.right && character.x + character.width < canvas.width) {
+        character.x += character.speed;
+      }
+      if (touchKeys.left && character.x > 0) {
+        character.x -= character.speed;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+      updateObstacles();
+      drawObstacles();
+      drawCharacter();
+
+      character.velocityY += character.gravity;
+      character.y += character.velocityY;
+
+      if (character.y + character.height >= canvas.height) {
+        character.y = canvas.height - character.height;
+        character.isJumping = false;
+      } else if (character.y < 0) {
+        character.y = 0;
+        character.velocityY = 0;
+      }
+
+      if (spawnCounter++ >= spawnRate) {
+        spawnObstacle();
+        spawnCounter = 0;
+      }
+
+      if (checkCollision()) {
+        playVideo(loseVideos[level - 1], "Sergio Vallejo dice que eres malísimo, dale al espacio y vuelve al inicio", "lose");
+        gameOver = true;
+        return;
+      }
+
+      if (obstaclesCleared >= 10) {
+        if (level === 6) {
+          showFinalMessage();
+        } else {
+          waitingForNextLevel = true;
+          playVideo(winVideos[level - 1], "Sergio Vallejo dice que confía en ti, dale al espacio y continúa", "win");
+        }
+        return;
+      }
+
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "#FFF";
+      ctx.textAlign = "center";
+      const centerX = canvas.width / 2;
+
+      ctx.fillText(`Nivel: ${level}`, centerX, 30);
+      ctx.fillText("Controles: → derecha, ← izquierda, Espacio saltar", centerX, 60);
+
+      if (level === 1) {
+        ctx.fillText("Este es el nivel de entrenamiento. Entrena los controles con Mr. Bean.", centerX, 90);
+      }
+
+      requestAnimationFrame(updateGame);
+    }
+
+    function playVideo(videoSrc, message, type) {
+      videoPlaying = true;
+      backgroundMusic.pause();
+      videoOverlay.style.display = "flex";
+      resultText.textContent = message;
+      levelVideo.src = videoSrc;
+      levelVideo.play();
+
+      if (type === "win") {
+        videoOverlay.style.backgroundImage = "url('fondo_ganar.jpg')";
+      } else if (type === "lose") {
+        videoOverlay.style.backgroundImage = "url('fondo_perder.jpg')";
+      } else {
+        videoOverlay.style.backgroundImage = "none";
+      }
+    }
+
+    function stopVideo() {
+      videoPlaying = false;
+      videoOverlay.style.display = "none";
+      levelVideo.pause();
+      levelVideo.currentTime = 0;
+
+      if (waitingForNextLevel) {
+        startNextLevel();
+      } else if (gameOver) {
+        window.location.reload();
+      }
+
+      backgroundMusic.play();
+    }
+
+    function showFinalMessage() {
+      finalMessage.style.display = "flex";
+      backgroundMusic.pause();
+    }
+
+    function restartGame() {
+      finalMessage.style.display = "none";
+      level = 1;
+      obstaclesCleared = 0;
+      gameOver = false;
+      waitingForNextLevel = false;
+      videoPlaying = false;
+      backgroundMusic.play();
+      startScreen.style.display = "flex";
+    }
+
+    function startNextLevel() {
+      waitingForNextLevel = false;
+      level++;
+      obstaclesCleared = 0;
+      character.y = 500;
+      spawnCounter = 0;
+      obstacles.length = 0;
+
+      backgroundImg.src = backgroundImages[Math.min(level - 1, backgroundImages.length - 1)];
+      currentObstacleImg.src = obstacleImages[Math.min(level - 1, obstacleImages.length - 1)];
+      updateGame();
+    }
+
+    // Movimiento del personaje con las flechas del teclado
+    document.addEventListener("keydown", function(event) {
+      if (event.key === " ") {
+        if (gameOver || waitingForNextLevel) {
+          stopVideo();
+        } else if (!character.isJumping) {
+          character.velocityY = -character.jumpPower;
+          character.isJumping = true;
+          jumpSound.play();
+        }
+      }
+
+      if (event.key === "ArrowRight" && character.x + character.width < canvas.width) {
+        character.x += character.speed;
+      }
+
+      if (event.key === "ArrowLeft" && character.x > 0) {
+        character.x -= character.speed;
+      }
+    });
+
+    // --- CONTROLES TÁCTILES ---
+    const btnLeft = document.getElementById("btnLeft");
+    const btnRight = document.getElementById("btnRight");
+    const btnJump = document.getElementById("btnJump");
+
+    btnLeft.addEventListener("touchstart", (e) => { e.preventDefault(); touchKeys.left = true; }, { passive: false });
+    btnLeft.addEventListener("touchend", (e) => { e.preventDefault(); touchKeys.left = false; }, { passive: false });
+    btnRight.addEventListener("touchstart", (e) => { e.preventDefault(); touchKeys.right = true; }, { passive: false });
+    btnRight.addEventListener("touchend", (e) => { e.preventDefault(); touchKeys.right = false; }, { passive: false });
+
+    btnJump.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      if (gameOver || waitingForNextLevel) {
+        stopVideo();
+      } else if (!character.isJumping) {
+        character.velocityY = -character.jumpPower;
+        character.isJumping = true;
+        jumpSound.play();
+      }
+    }, { passive: false });
+
+    // También con click para compatibilidad
+    btnLeft.addEventListener("mousedown", () => { touchKeys.left = true; });
+    btnLeft.addEventListener("mouseup", () => { touchKeys.left = false; });
+    btnRight.addEventListener("mousedown", () => { touchKeys.right = true; });
+    btnRight.addEventListener("mouseup", () => { touchKeys.right = false; });
+    btnJump.addEventListener("click", () => {
+      if (gameOver || waitingForNextLevel) {
+        stopVideo();
+      } else if (!character.isJumping) {
+        character.velocityY = -character.jumpPower;
+        character.isJumping = true;
+        jumpSound.play();
+      }
+    });
+
+    // Mostrar pantalla de inicio y ocultar el canvas del juego
+    playButton.addEventListener("click", function () {
+      gameStarted = true;
+      startScreen.style.display = "none";
+      canvas.style.display = "block";
+      backgroundMusic.play();
+
+      backgroundImg.src = backgroundImages[0];
+      currentObstacleImg.src = obstacleImages[0];
+
+      backgroundImg.onload = () => {
+        updateGame();
+      };
+    });
+
+    restartButton.addEventListener("click", restartGame);
+
+    backgroundImg.src = backgroundImages[0];
+    currentObstacleImg.src = obstacleImages[0];
+
+    backgroundImg.onload = () => {
+      updateGame();
+    };
+  </script>
+</body>
+</html>
