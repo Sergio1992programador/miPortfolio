@@ -22,7 +22,7 @@
         #contenedor-escalable {
             position: absolute;
             width: 1300px;
-            height: 700px;
+            height: 900px;
             transform-origin: top left;
         }
 
@@ -142,9 +142,9 @@
         imgFondo.style.pointerEvents = 'none';
         document.body.insertBefore(imgFondo, document.body.firstChild);
 
-        // Escalado proporcional sin distorsión
+        // Escalado proporcional
         const anchoBase = 1300;
-        const altoBase = 700;
+        const altoBase = 900;
         const contenedor = document.getElementById('contenedor-escalable');
 
         function escalarContenedor() {
@@ -179,7 +179,6 @@
             lenta.classList.add("lenta-azul"); lenta.classList.remove("lenta");
             rapida.classList.add("rapida-azul"); rapida.classList.remove("rapida");
         }
-
         function botonPause(){
             video.pause();
             pause.classList.remove("pause-blanco"); pause.classList.add("pause-verde");
@@ -187,7 +186,6 @@
             lenta.classList.add("lenta-azul"); lenta.classList.remove("lenta");
             rapida.classList.add("rapida-azul"); rapida.classList.remove("rapida");
         }
-
         function botonStop(){
             video.pause(); video.currentTime = 0;
             play.classList.remove("play-verde"); pause.classList.remove("pause-verde");
@@ -195,18 +193,14 @@
             rapida.classList.remove("rapida"); rapida.classList.add("rapida-azul");
             lenta.classList.remove("lenta"); lenta.classList.add("lenta-azul");
         }
-
         function botonMas(){
             if(video.volume < 1) video.volume = Math.min(video.volume + 0.1, 1);
         }
-
         function botonMenos(){
             if(video.volume >= 0.1) video.volume = Math.max(video.volume - 0.1, 0);
         }
-
         function adelantarCinco(){ video.currentTime += 5; }
         function atrasarCinco(){ video.currentTime -= 5; }
-
         function camaraRapida(){
             if(video.playbackRate <= 15.9) video.playbackRate = video.playbackRate + 0.2;
             if(video.playbackRate > 1){
@@ -217,7 +211,6 @@
             pause.classList.remove("pause-verde"); pause.classList.add("pause-azul");
             video.play();
         }
-
         function camaraLenta(){
             if(video.playbackRate >= 0.3) video.playbackRate = video.playbackRate - 0.2;
             if(video.playbackRate < 1){
@@ -228,7 +221,6 @@
             pause.classList.remove("pause-verde"); pause.classList.add("pause-azul");
             video.play();
         }
-
         function botonMute(){
             video.muted = !video.muted;
             mute.classList.toggle("mute-rojo");
