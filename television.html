@@ -5,161 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Televisión</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
             width: 100vw;
             height: 100vh;
-        }
-
-        @keyframes mano-entrando {
-            0% { transform: translate(-1000px, -1000px) scale(0.3); opacity: 0; }
-            60% { transform: translate(10px, 10px) scale(1.1); opacity: 1; }
-            100% { transform: translate(0, 0) scale(1); opacity: 1; }
-        }
-
-        #contenedor-escalable {
-            position: absolute;
-            width: 1300px;
-            height: 650px;
-            transform-origin: top left;
-        }
-
-        #television { position: relative; }
-
-        #video {
-            background-color: rgb(0, 0, 0);
-            width: 500px;
-            height: 400px;
-            border-radius: 25px;
-            position: absolute;
-            top: 150px;
-            left: 360px;
-        }
-
-        #botones {
-            background-color: #8d81c0;
-            width: 95px;
-            left: 860px;
-            top: 220px;
-            position: absolute;
-            height: 360px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            overflow: hidden;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            background-image: url('simpsons1.png');
+            background-size: 100% 100%;
+        }
+
+        #wrapper {
+            position: relative;
+            width: 60vw;
+            max-width: 600px;
         }
 
         #video-uno {
-            width: 491.999px;
-            height: 605px;
-            border-radius: 50px;
             position: absolute;
-            top: -100px;
-            left: 4px;
+            width: 83%;
+            height: auto;
+            aspect-ratio: 492 / 605;
+            border-radius: 8%;
+            top: 29%;
+            left: 5%;
+            z-index: 2;
+        }
+
+        #botones {
+            position: absolute;
+            top: 30%;
+            left: 91%;
+            width: 12%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4%;
+            z-index: 2;
         }
 
         .botones {
             background-image: url(btns.jpg);
-            height: 40px;
-            width: 40px;
-            min-width: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            gap: 30px;
+            width: 100%;
+            aspect-ratio: 1;
+            background-size: 700%;
+            min-width: 0;
         }
 
-        .rapida { background-position: -122px 526px; }
-        .lenta { background-position: -162px 526px; }
-        .mute { background-position: -483px 301px; }
-        .play-azul { background-position: -4px 301px; }
-        .pause-azul { background-position: -281px 301px; }
-        #rapido-cinco { background-position: -202px 301px; }
-        #rapido-cinco:active { background-position: -202px 526px; }
-        #lento-cinco { background-position: -241px 301px; }
-        #lento-cinco:active { background-position: -241px 526px; }
-        #volumen-max { background-position: 80px 301px; }
-        #volumen-max:active { background-position: 80px 526px; }
-        #volumen-min { background-position: 40px 301px; }
-        #volumen-min:active { background-position: 40px 526px; }
-        .rapida-azul { background-position: -123px 301px; }
-        .lenta-azul { background-position: -162px 301px; }
-        #stop { background-position: -443px 301px; }
-        #stop:active { background-position: -443px 526px; }
-        .mute-rojo { background-position: -483px 564px; }
-        .play-verde { background-position: -4px 526px; }
-        .pause-verde { background-position: -281px 526px; }
-        #mute:active { background-position: -483px 526px; }
+        .play-azul { background-position: 0.6% 48%; }
+        .pause-azul { background-position: 42% 48%; }
+        .play-verde { background-position: 0.6% 83%; }
+        .pause-verde { background-position: 42% 83%; }
+        .rapida-azul { background-position: 18% 48%; }
+        .lenta-azul { background-position: 24% 48%; }
+        .rapida { background-position: 18% 83%; }
+        .lenta { background-position: 24% 83%; }
+        #rapido-cinco { background-position: 30% 48%; }
+        #rapido-cinco:active { background-position: 30% 83%; }
+        #lento-cinco { background-position: 36% 48%; }
+        #lento-cinco:active { background-position: 36% 83%; }
+        #volumen-max { background-position: -13% 48%; }
+        #volumen-max:active { background-position: -13% 83%; }
+        #volumen-min { background-position: -7% 48%; }
+        #volumen-min:active { background-position: -7% 83%; }
+        #stop { background-position: 66% 48%; }
+        #stop:active { background-position: 66% 83%; }
+        .mute { background-position: 72% 48%; }
+        .mute-rojo { background-position: 72% 89%; }
 
         #tiempo {
             position: absolute;
-            top: 350px;
+            bottom: 32%;
+            left: 7%;
             color: white;
-            left: 30px;
+            font-size: 1.2vw;
+            z-index: 3;
+        }
+
+        @keyframes mano-entrando {
+            0% { transform: translate(-200px, -200px) scale(0.3); opacity: 0; }
+            60% { transform: translate(5px, 5px) scale(1.1); opacity: 1; }
+            100% { transform: translate(0, 0) scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            #wrapper {
+                width: 95vw;
+            }
+            #tiempo {
+                font-size: 2.5vw;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div id="contenedor-escalable">
-        <div id="television">
-            <div id="video">
-                <video id="video-uno"><source src="ralph_compressed.mp4" type="video/mp4"></video>
-                <p id="tiempo">Tiempo: 0 segundos</p>
-            </div>
-            <div id="botones">
-                <button id="play" class="botones play-azul" title="Play"></button>
-                <button id="pause" class="botones pause-azul" title="Pause"></button>
-                <button id="rapido-cinco" class="botones" title="Avanza cinco segundos"></button>
-                <button id="lento-cinco" class="botones" title="Retrocede cinco segundos"></button>
-                <button id="volumen-max" class="botones" title="Sube el volumen"></button>
-                <button id="volumen-min" class="botones" title="Baja el volumen"></button>
-                <button id="reproduccion-rapida" class="botones rapida-azul" title="Reproducción rápida"></button>
-                <button id="reproduccion-lenta" class="botones lenta-azul" title="Reproducción lenta"></button>
-                <button id="stop" class="botones" title="Stop"></button>
-                <button id="mute" class="botones mute" title="Mute"></button>
-            </div>
+    <div id="wrapper">
+        <img src="simpsons1.png" style="width:100%;display:block;visibility:hidden;">
+        <video id="video-uno"><source src="ralph_compressed.mp4" type="video/mp4"></video>
+        <p id="tiempo">Tiempo: 0 segundos</p>
+        <div id="botones">
+            <button id="play" class="botones play-azul" title="Play"></button>
+            <button id="pause" class="botones pause-azul" title="Pause"></button>
+            <button id="rapido-cinco" class="botones" title="Avanza cinco segundos"></button>
+            <button id="lento-cinco" class="botones" title="Retrocede cinco segundos"></button>
+            <button id="volumen-max" class="botones" title="Sube el volumen"></button>
+            <button id="volumen-min" class="botones" title="Baja el volumen"></button>
+            <button id="reproduccion-rapida" class="botones rapida-azul" title="Reproducción rápida"></button>
+            <button id="reproduccion-lenta" class="botones lenta-azul" title="Reproducción lenta"></button>
+            <button id="stop" class="botones" title="Stop"></button>
+            <button id="mute" class="botones mute" title="Mute"></button>
         </div>
     </div>
 
     <script>
-        // Fondo
-        const imgFondo = document.createElement('img');
-        imgFondo.src = 'simpsons1.png';
-        imgFondo.style.position = 'fixed';
-        imgFondo.style.top = '0';
-        imgFondo.style.left = '0';
-        imgFondo.style.width = '100vw';
-        imgFondo.style.height = '100vh';
-        imgFondo.style.objectFit = 'fill';
-        imgFondo.style.zIndex = '-1';
-        imgFondo.style.userSelect = 'none';
-        imgFondo.style.pointerEvents = 'none';
-        document.body.insertBefore(imgFondo, document.body.firstChild);
-
-        // Escalado proporcional
-        const anchoBase = 1300;
-        const altoBase = 650;
-        const contenedor = document.getElementById('contenedor-escalable');
-
-        function escalarContenedor() {
-            const escalaX = window.innerWidth / anchoBase;
-            const escalaY = window.innerHeight / altoBase;
-            const escala = Math.min(escalaX, escalaY);
-            contenedor.style.transform = `scale(${escala})`;
-            contenedor.style.left = ((window.innerWidth - anchoBase * escala) / 2) + 'px';
-            contenedor.style.top = ((window.innerHeight - altoBase * escala) / 2) + 'px';
-        }
-
-        window.addEventListener('load', escalarContenedor);
-        window.addEventListener('resize', escalarContenedor);
-
-        // Controles
         let play = document.querySelector("#play");
         let pause = document.querySelector("#pause");
         let rapidoCinco = document.querySelector("#rapido-cinco");
@@ -193,16 +153,12 @@
             rapida.classList.remove("rapida"); rapida.classList.add("rapida-azul");
             lenta.classList.remove("lenta"); lenta.classList.add("lenta-azul");
         }
-        function botonMas(){
-            if(video.volume < 1) video.volume = Math.min(video.volume + 0.1, 1);
-        }
-        function botonMenos(){
-            if(video.volume >= 0.1) video.volume = Math.max(video.volume - 0.1, 0);
-        }
+        function botonMas(){ if(video.volume < 1) video.volume = Math.min(video.volume + 0.1, 1); }
+        function botonMenos(){ if(video.volume >= 0.1) video.volume = Math.max(video.volume - 0.1, 0); }
         function adelantarCinco(){ video.currentTime += 5; }
         function atrasarCinco(){ video.currentTime -= 5; }
         function camaraRapida(){
-            if(video.playbackRate <= 15.9) video.playbackRate = video.playbackRate + 0.2;
+            if(video.playbackRate <= 15.9) video.playbackRate += 0.2;
             if(video.playbackRate > 1){
                 rapida.classList.remove("rapida-azul"); rapida.classList.add("rapida");
                 lenta.classList.remove("lenta"); lenta.classList.add("lenta-azul");
@@ -212,7 +168,7 @@
             video.play();
         }
         function camaraLenta(){
-            if(video.playbackRate >= 0.3) video.playbackRate = video.playbackRate - 0.2;
+            if(video.playbackRate >= 0.3) video.playbackRate -= 0.2;
             if(video.playbackRate < 1){
                 lenta.classList.remove("lenta-azul"); lenta.classList.add("lenta");
                 rapida.classList.remove("rapida"); rapida.classList.add("rapida-azul");
@@ -251,28 +207,18 @@
         lenta.addEventListener("click", camaraLenta);
         mute.addEventListener("click", botonMute);
 
-        // Animación mano
         const rutaMano = "mano-simpsons.png";
-        const botonesTV = document.querySelectorAll(".botones");
-        botonesTV.forEach(btn => {
+        document.querySelectorAll(".botones").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const rect = e.target.getBoundingClientRect();
                 const manoEl = document.createElement("img");
                 manoEl.src = rutaMano;
-                manoEl.style.position = "fixed";
-                manoEl.style.width = "100px";
-                manoEl.style.zIndex = "1000";
-                manoEl.style.pointerEvents = "none";
-                manoEl.style.opacity = "1";
-                manoEl.style.transition = "opacity 0.3s ease";
-                manoEl.style.left = (rect.left - 40) + "px";
-                manoEl.style.top = (rect.top - 30) + "px";
+                manoEl.style.cssText = "position:fixed;width:80px;z-index:1000;pointer-events:none;transition:opacity 0.3s ease;";
+                manoEl.style.left = (rect.left - 30) + "px";
+                manoEl.style.top = (rect.top - 20) + "px";
                 manoEl.style.animation = "mano-entrando 0.5s ease-out";
                 document.body.appendChild(manoEl);
-                setTimeout(() => {
-                    manoEl.style.opacity = "0";
-                    setTimeout(() => manoEl.remove(), 1000);
-                }, 800);
+                setTimeout(() => { manoEl.style.opacity = "0"; setTimeout(() => manoEl.remove(), 1000); }, 800);
             });
         });
     </script>
