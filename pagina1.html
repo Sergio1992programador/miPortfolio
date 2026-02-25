@@ -6,6 +6,39 @@
     <link rel="stylesheet" href="pagina1.css">
     <link rel="shortcut icon" href="./logo11.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("LotzLDjtU41eyM4if");
+        })();
+    </script>
+    <style>
+        /* Imagen de perfil responsive para móvil */
+        @media (max-width: 768px) {
+            .profile__img {
+                width: 150px !important;
+                height: 150px !important;
+                max-width: 150px !important;
+                object-fit: cover !important;
+                border-radius: 50% !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+
+            .profile__container {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+
+            .profile__wrapper {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+        }
+    </style>
     <title>Sergio Vallejo</title>
 </head>
 <body>
@@ -100,9 +133,6 @@
         <h2 class="portfolio__tiitle">Portfolio</h2>
         <div class="portfolio__project-container">
             
-            <!--<div class="portfolio__project">
-                <h2 class="portfolio__project-name"><a href="https://sergio296.wordpress.com/" target="_blank">Proyecto</a><p class="hidden-text">Mi primera página en WordPress recorre la historia de los guerreros más legendarios, desde vikingos hasta samuráis, sumergiendo al visitante en batallas y leyendas. Realicé este proyecto sin conocimientos previos y de forma gratuita, lo que me permitió aprender WordPress desde cero y sentar las bases de mi evolución profesional.</p></h2>
-            </div>-->
             <div class="portfolio__project">
                 <h2 class="portfolio__project-name"><a href="Videojuego/Chavo vs sistema.html" target="_blank">Proyecto</a><p class="hidden-text">Mi primer juego es una aventura de un muñeco saltarín que lucha contra la corrupción. Cada nivel trae un reto y, gane o pierda, un video meme diferente como recompensa o castigo. Risas, caos y diversión asegurada. ¡Prepárate para saltar y reír sin parar!</p></h2>
             </div>
@@ -132,42 +162,41 @@
             <div class="portfolio__project">
                 <h2 class="portfolio__project-name"><a href="https://www.figma.com/proto/j8oTGO8M3DggZtx9yIK4Lv/Untitled?node-id=788-7253&t=M58uORK8QL4TGVh8-1&scaling=scale-down&content-scaling=fixed&page-id=788%3A3845&starting-point-node-id=788%3A3868" target="_blank">Proyecto</a><p class="hidden-text">Este proyecto fue desarrollado en Figma como mi primer trabajo sin conocimientos previos de código. Aunque no cuenta con diseño responsive, lo incluyo en mi portafolio porque refleja mi creatividad y habilidades en diseño de interfaces. A pesar de las limitaciones técnicas, considero que el resultado es visualmente atractivo y muestra mi evolución en el diseño digital.</p></h2>
             </div>
-
-            
-            
-            
         </div>
     </section>
+
     <section class="form" id="contact">
         <h2 class="form__title">Contacto</h2>
-        <form class="form__form">
+        <form class="form__form" id="contactForm">
             <div class="form__input-container">
                 <label>Nombre:
-                    <input type="text" placeholder="Escriba su nombre">
+                    <input type="text" id="nombre" placeholder="Escriba su nombre" required>
                 </label>
             </div>
 
             <div class="form__input-container">
                 <label>Apellidos:
-                    <input type="text" placeholder="Escriba sus apellidos">
+                    <input type="text" id="apellidos" placeholder="Escriba sus apellidos" required>
                 </label>
             </div>
 
             <div class="form__input-container">
                 <label>Email:
-                    <input type="email" placeholder="Escriba su email">
+                    <input type="email" id="email" placeholder="Escriba su email" required>
                 </label>
             </div>
 
             <div class="form__input-container">
                 <label>Mensaje:
-                    <textarea placeholder="Escriba su mensaje"></textarea>
+                    <textarea id="mensaje" placeholder="Escriba su mensaje" required></textarea>
                 </label>
             </div>
 
             <div class="form__input-container">
                 <input class="btn-1" type="submit" value="Enviar">
             </div>
+
+            <p id="form-status" style="text-align:center; margin-top:10px; font-weight:bold;"></p>
         </form>
     </section>
 
@@ -184,19 +213,33 @@
             </a>
         </div>
     </footer>
+
     <script>
-        const container = document.getElementById('profileContainer');
-        const video = document.getElementById('profileVideo');
-    
-        //container.addEventListener('mouseenter', () => {
-            //container.classList.add('hovering');
-            //video.currentTime = 0;
-            //video.play();
-        });
-    
-        //container.addEventListener('mouseleave', () => {
-            //video.pause();
-            //container.classList.remove('hovering');
+        // Formulario con EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const status = document.getElementById('form-status');
+            status.textContent = 'Enviando...';
+            status.style.color = 'gray';
+
+            const templateParams = {
+                nombre: document.getElementById('nombre').value,
+                apellidos: document.getElementById('apellidos').value,
+                email: document.getElementById('email').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+
+            emailjs.send('service_8w5hxpl', 'template_3q6e6rc', templateParams)
+                .then(function() {
+                    status.textContent = '¡Mensaje enviado correctamente!';
+                    status.style.color = 'green';
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    status.textContent = 'Error al enviar. Inténtalo de nuevo.';
+                    status.style.color = 'red';
+                    console.error('Error:', error);
+                });
         });
     </script>
 </body>
