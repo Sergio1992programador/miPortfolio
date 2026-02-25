@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="La mejor página" />
+    <meta name="author" content="Sergio Vallejo" />
+    <title>Iniciar sesión - Personajes</title>
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/global.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
+    <script type="module" src="resources/js/login.js" defer></script>
+    <script src="../bootstrap/js/bootstrap.bundle.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="container-fluid">
+                <div id="form-container"
+                    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 m-4 justify-content-lg-center">
+
+                    
+                    <form id="loginForm" class="bg-primary text-secondary fs-5 p-4 rounded"
+                    aria-describedby="login-message">
+                     <div id="login-message" class="text-danger text-center mb-3 d-none" role="alert" aria-live="polite"></div>
+                        <h2 class="text-info fs-2 text-center mb-4">Iniciar sesión</h2>
+
+                        <div class="mb-3">
+                            <label for="usuario" class="form-label">Usuario</label>
+                            <input type="text" name="usuario" id="usuario" class="form-control border-0"
+                                placeholder="Ponga su usuario" required autocomplete="username" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" name="password" id="password" class="form-control border-0"
+                                placeholder="Ponga su contraseña" required autocomplete="current-password" />
+                        </div>
+
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn bg-info text-primary border-0" type="submit">Entrar</button>
+                            <button class="btn bg-info text-primary border-0" type="reset"
+                                aria-label="Limpiar formulario">Limpiar</button>
+                        </div>
+
+                        <div class="text-center">
+                            <a class="btn bg-info text-primary border-0" href="crearusuario.html">Crear usuario</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

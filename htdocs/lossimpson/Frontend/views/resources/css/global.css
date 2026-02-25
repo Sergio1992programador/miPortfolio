@@ -1,0 +1,205 @@
+.custom-hover:hover {
+  color: #01aed9 !important;
+}
+
+.nav-link {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 25px;
+  color: black;
+}
+
+.navbar-toggler{
+  color: #ffffff !important;
+  background-color: #01aed9 !important;
+  
+}
+
+.navbar-toggler:hover{
+  color: #ffffff !important;
+  background-color: #01aed9 !important;
+  
+}
+
+.text-info{
+  color:#01aed9 !important;
+}
+
+.text-info:hover{
+  color:#0aa1c7 !important;
+}
+
+
+button,
+.btn {
+  font-size: 20px; /* tamaño pequeño */
+  padding: 0.25rem 0.5rem; /* ajusta el espacio interno */
+  color: rgb(255, 237, 78) !important;
+  background-color: #01aed9 !important;
+  border: none;
+  border-radius: 0.50rem;
+}
+
+button:hover,.btn:hover{
+  color: rgb(224, 209, 66) !important;
+  background-color: #0aa1c7 !important;
+}
+
+button:active,.btn:active{
+  color: rgb(196, 182, 57) !important;
+  background-color: #0e88a7 !important;
+} 
+
+form:hover{
+  box-shadow: 10px 5px 5px #01aed9 !important;
+}
+
+h1:hover,
+.nav-link:hover,
+.nav-item:hover{
+  color: #01aed9 !important;
+}
+
+.navbar{
+   background-color: rgb(255, 237, 78) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #01aed9 !important;
+  box-shadow: 0 0 0 0.2rem #01aed9 !important;
+}
+
+header.fixed-top {
+  z-index: 1030; /* por encima del contenido */
+}
+
+
+body {
+  background-image: url("../../../../img/lossimpsonss.jpg");
+  background-repeat: no-repeat;
+  /* no repetir la imagen */
+  background-size: cover;
+  /* que cubra todo el ancho */
+  background-position: center;
+  /* centrada */
+  background-attachment: fixed;
+  /* fija al hacer scroll */
+  height: 100vh;
+  /* ocupa toda la altura de la pantalla */
+  padding-top: 120px; /* ajusta según la altura del header */
+
+}
+
+.hover-card:hover {
+  background-color: rgb(255, 237, 78) !important;
+  box-shadow: 10px 5px 5px #01aed9 !important;
+}
+
+h1 {
+  color: black;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+strong:hover {
+  color: #01aed9;
+}
+
+h3 {
+  padding: 15px;
+}
+
+* {
+  scrollbar-width: 0;
+  /* Firefox */
+  scrollbar-color: #01aed9 #f0f0f0;
+  /* color del thumb y del track */
+}
+
+.descripcion-wrapper {
+  max-height: 200px;
+  overflow-y: hidden;
+  /* Oculta el scroll por defecto */
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Hover en la card activa scroll y borde */
+.col-sm-10:hover .descripcion-wrapper {
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+/* desplaza los enlaces un poco a la izquierda en desktop */
+.shift-left {
+  margin-right: 50px;
+  transition: margin-right 0.3s ease;
+}
+
+/* desplaza el botón hamburguesa un poco a la izquierda en móvil */
+.shift-toggler {
+  margin-right: 50px;
+  transition: margin-right 0.3s ease;
+}
+
+footer {
+  margin-top: auto!important; /* empuja el footer al final */
+}
+
+
+/* Usando clase */
+.sobre {
+  color: #01aed9 !important;
+}
+
+
+#sergio{
+  width: 200px !important;
+  object-fit: cover;
+}
+
+#bel{
+    width: 190px !important;
+    object-fit: cover;
+}
+
+
+#proyecto{
+    width: 227px !important;
+    object-fit: cover;
+}
+
+#tecnologia{
+    width: 280px !important;
+    object-fit: cover;
+}
+
+
+#vision{
+    width: 280px !important;
+    object-fit: cover;
+}
+
+
+#normal{
+  background-color: rgb(255, 237, 78) !important;
+  width: 60%;
+  border-radius: 5px;
+}
+
+#espacio{
+  margin:50px;
+  justify-content: center;
+  display: flex;
+}
+
+
+#contacto-titulo{
+  font-size: 2rem !important;
+  justify-content: center;
+  display: flex;
+}

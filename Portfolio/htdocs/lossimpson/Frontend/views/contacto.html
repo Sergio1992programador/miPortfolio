@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="La mejor página" />
+    <meta name="author" content="Sergio Vallejo" />
+    <title>Contacto</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/global.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
+
+    <!-- CAMBIO: cargo contact.js como módulo para que funcione con imports -->
+    <script type="module" src="resources/js/contact.js"></script>
+
+    <script src="../bootstrap/js/bootstrap.bundle.js" defer></script>
+</head>
+<body>
+  <main class="container-fluid">
+    <section id="espacio" aria-labelledby="contacto-titulo">
+           <!-- CAMBIO: id del formulario debe coincidir con contact.js -->
+           <form id="normal" class="hover-card p-4 m-3" method="POST">
+             <h1 id="contacto-titulo" class="text-info">Contacto</h1>
+        <div class="mb-3">
+          <label for="nombre" class="sobre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="apellidos" class="sobre">Apellidos</label>
+          <input type="text" id="apellidos" name="apellidos" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="sobre">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="mensaje" class="sobre">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" class="form-control" rows="5" required></textarea>
+        </div>
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn bg-info text-primary border-0" type="submit">Enviar</button>
+                <button class="btn bg-info text-primary border-0" type="reset"
+                aria-label="Limpiar formulario">Limpiar</button>
+            </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="La mejor página" />
+    <meta name="author" content="Sergio Vallejo" />
+    <title>Sobre Nosotros</title>
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/global.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
+
+    <script src="../bootstrap/js/bootstrap.bundle.js" defer></script>
+      <script type="module">
+    import { renderHeader } from "../views/components/header.js";
+    import { renderFooter } from "../views/components/footer.js";
+    document.addEventListener("DOMContentLoaded", () => {
+      // Insertar header al principio del body
+      renderHeader();
+
+      // Insertar tarjeta en el contenedor
+     
+
+      // Insertar footer al final del body
+      renderFooter();
+    });
+  </script>
+</head>
+
+<body>
+    <main>
+        <!-- Sección Sobre Nosotros con misma estructura que personajes -->
+        <section aria-labelledby="personajes-titulo">
+            <div class="container-fluid">
+                <h1 id="personajes-titulo" class="visually-hidden">Sobre Nosotros</h1>
+                <div id="character-container"
+                    class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 row-cols-xxl-3 g-4 m-3 justify-content-center  justify-content-center">
+
+                    <!-- Tarjeta sobre Sergio -->
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 hover-card cursor-pointer">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-info">Sergio Vallejo Escorihuela</h2>
+                                <img id="sergio" src="../../img/sergio.png" alt="Sergio">
+                                <h4 class="sobre">Diseñador Web y Creador</h4>
+                                <p class="sobre">
+                                    Soy Sergio Vallejo Escorihuela, diseñador web especializado en frontend y backend. Manejo HTML, CSS, JavaScript, PHP y MySQL. Esta página dedicada a Los Simpson es un proyecto personal que une creatividad y tecnología para rendir homenaje a la serie.
+                                </p>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0 hover-card cursor-pointer">
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-info">Iván Contreras Guevara</h2>
+                                <img id="bel" src="../../img/bel.png" alt="Iván Contreras Guevara">
+                                <h4 class="sobre">Colaborador del Proyecto</h4>
+                                <p class="sobre">
+                                    Iván Contreras Guevara ha participado como colaborador en este proyecto, aportando ideas y apoyo en el desarrollo. Su contribución refleja el espíritu de trabajo en equipo y la pasión compartida por rendir homenaje a Los Simpson.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+            <!-- Tarjeta sobre el proyecto -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 hover-card cursor-pointer">
+                    <div class="card-body text-center">
+                        <h2 class="card-title text-info">El Proyecto</h2>
+                        <img id="proyecto" src="../../img/proyecto.png" alt="Sergio">
+                        <h4 class="sobre">Un homenaje digital a Los Simpson</h4>
+                        <p class="sobre">
+                            Este sitio web es un espacio interactivo donde los fans de Los Simpson pueden descubrir y disfrutar contenido inspirado en la serie. Combina diseño moderno con referencias nostálgicas, tipografías y colores inspirados en Springfield. Es también un portafolio vivo que refleja mi estilo y forma de trabajar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta sobre las tecnologías -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 hover-card cursor-pointer">
+                    <div class="card-body text-center">
+                        <h2 class="card-title text-info">Tecnologías Utilizadas</h2>
+                        <img id="tecnologia" src="../../img/tecnologia.png" alt="Sergio">
+                        <h4 class="sobre">Frontend y Backend</h4>
+                        <p class="sobre">
+                            HTML5 y CSS3 para estructura y estilo. JavaScript para interactividad. Bootstrap para diseño responsive. PHP para lógica del servidor. MySQL para gestión de bases de datos. Todo esto asegura que la página sea rápida, funcional y escalable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta sobre la visión -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 hover-card cursor-pointer">
+                    <div class="card-body text-center">
+                        <h2 class="card-title text-info">Visión</h2>
+                        <img id="vision" src="../../img/vision.png" alt="Sergio">
+                        <h4 class="sobre">Diseño con propósito</h4>
+                        <p class="sobre">
+                            Mi visión como diseñador web es crear proyectos que transmitan emociones y conecten con las personas. Los Simpson representan humor y cultura popular, y he querido que todo eso se refleje en esta página. Cada detalle está pensado para ofrecer una experiencia inmersiva y entretenida.
+                        </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

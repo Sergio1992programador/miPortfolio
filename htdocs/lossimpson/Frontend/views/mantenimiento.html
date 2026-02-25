@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="La mejor página" />
+    <meta name="author" content="Sergio Vallejo" />
+    <title>Página en mantenimiento</title>
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/global.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
+
+    <script src="../bootstrap/js/bootstrap.bundle.js" defer></script>
+    <script type="module" src="resources/js/personajes.js" defer></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div id="form-container"
+         class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 m-4 justify-content-lg-center">
+
+      <!-- Formulario de mantenimiento -->
+      <form id="maintenanceForm" class="bg-primary text-secondary fs-5 p-4 rounded"
+            aria-describedby="maintenance-message">
+
+        <div id="maintenance-message" class="text-danger text-center mb-3 d-none" role="alert" aria-live="polite"></div>
+
+        <h2 class="text-info fs-2 text-center mb-4">En desarrollo</h2>
+
+        <p class="text-center mb-4">
+          Estamos trabajando para mejorar tu experiencia.
+        </p>
+
+        <!-- Botón volver -->
+        <div class="d-grid gap-2 mb-3">
+          <button class="btn bg-info text-primary border-0" type="button" onclick="window.history.back()">
+            Volver
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

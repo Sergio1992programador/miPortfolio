@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "." // Carpeta raíz del proyecto
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default", // Protocolo de autenticación por defecto
+					"enableSsl": "Disabled"    // SSL desactivado
+				},
+				"ssh": "Disabled",            // Conexión SSH desactivada
+				"previewLimit": 50,          // Límite de resultados al previsualizar consultas
+				"server": "localhost",       // Servidor de base de datos local
+				"port": 3306,                // Puerto por defecto de MySQL/MariaDB
+				"driver": "MariaDB",         // Tipo de base de datos
+				"name": "sergio",            // Nombre de la conexión en SQLTools
+				"username": "root",          // Usuario de la base de datos
+				"password": "123456",        // Contraseña del usuario
+				"database": "simpson_db"     // Nombre de la base de datos
+			}
+		]
+	}
+}

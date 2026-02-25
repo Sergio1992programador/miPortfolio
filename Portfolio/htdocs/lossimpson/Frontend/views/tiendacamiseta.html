@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="La mejor página" />
+  <meta name="author" content="Sergio Vallejo" />
+  <title>Listado de personajes</title>
+
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="resources/css/global.css" />
+  <link rel="manifest" href="../manifest.json" />
+  <link href="https://fonts.cdnfonts.com/css/simpsonfont" rel="stylesheet">
+  <script src="../bootstrap/js/bootstrap.bundle.js" defer></script>
+
+  <!-- ✅ Script que carga header, footer y tarjetas -->
+  <script type="module">
+    import { renderHeader } from "../views/components/header.js";
+    import { renderFooter } from "../views/components/footer.js";
+    import { cardWithCarousel } from "./resources/js/cardWithCarousel.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Insertar header al principio del body
+      renderHeader();
+
+      // Insertar tarjeta en el contenedor
+     
+
+      // Insertar footer al final del body
+      renderFooter();
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <section aria-labelledby="personajes-titulo">
+      <div class="container-fluid">
+        <h1 id="personajes-titulo" class="visually-hidden">Personajes disponibles</h1>
+
+        <div id="contenedorPersonajes" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 m-4 justify-content-center">
+          <!-- Aquí se insertan los personajes dinámicamente -->
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
