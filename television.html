@@ -148,10 +148,12 @@
             }
 
             #video-movil {
-                width: 100vw;
-                height: 100vh;
-                object-fit: cover;
-            }
+    width: 100vw;
+    height: calc(100vh - 60px);
+    object-fit: contain;
+    display: block;
+    pointer-events: auto;
+}
         }
     </style>
 </head>
@@ -159,7 +161,7 @@
 
     <!-- Vista móvil: solo el video a pantalla completa -->
     <div id="mobile-view">
-        <video id="video-movil" autoplay muted loop playsinline controls>
+        <video id="video-movil" autoplay muted loop playsinline controls disablepictureinpicture controlslist="nofullscreen nodownload">
             <source src="ralph_compressed.mp4" type="video/mp4">
         </video>
     </div>
