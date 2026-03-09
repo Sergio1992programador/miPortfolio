@@ -810,3 +810,9 @@ img {
 .profile__container.hovering .profile__video {
     opacity: 1;
 }
+
+@media (max-width: 1024px) {
+    .profile__img {
+        box-shadow: 0 0 20px 6px #d9bb8c;
+    }
+}
