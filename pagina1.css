@@ -352,6 +352,10 @@ h1 {
         align-items: center;
     }
 
+    .profile__img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 }
 
@@ -805,12 +809,4 @@ img {
 
 .profile__container.hovering .profile__video {
     opacity: 1;
-}
-
-
-
-@media (max-width: 1024px) {
-    .profile__img {
-        box-shadow: 0 0 20px 6px #d9bb8c !important;
-    }
 }
