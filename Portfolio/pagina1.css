@@ -471,7 +471,7 @@ a:hover + .hidden-text {
         grid-column: span 2;
     }
 
-    .portfolio__project:nth-child(6){
+    .portfolio__project:nth-child(8){
         grid-column: span 2;
     }
 }
@@ -813,6 +813,6 @@ img {
 
 @media (max-width: 1024px) {
     .profile__img {
-        box-shadow: 0 0 20px 6px #d9bb8c;
+        box-shadow: 0 0 20px 6px #d9bb8c !important;
     }
 }
