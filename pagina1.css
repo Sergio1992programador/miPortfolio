@@ -467,7 +467,7 @@ a:hover + .hidden-text {
         grid-column: span 2;
     }
 
-    .portfolio__project:nth-child(6){
+    .portfolio__project:nth-child(99){
         grid-column: span 2;
     }
 }
